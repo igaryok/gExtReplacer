@@ -8,9 +8,19 @@ const KEY_REPLACER_CON= Object.keys(DIC_REPLACER_CON);
 
 const replacerContenteditable = ({ target }) => {
   element = target;
-  KEY_REPLACER_CON.forEach(item => (
-    element.textContent = event.target.textContent.replace(item, DIC_REPLACER_CON[item]
-  )));
+  
+  KEY_REPLACER_CON.forEach(item => {
+    const range = document.createRange();
+    const selection = window.getSelection();
+
+    element.innerHTML = element.innerHTML.replace(item, DIC_REPLACER_CON[item]);
+    
+    range.selectNodeContents(element);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    
+  });
 }
 
 const enableReplacerContenteditable = () => {
