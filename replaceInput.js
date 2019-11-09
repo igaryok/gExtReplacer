@@ -7,10 +7,9 @@ const DIC_REPLACER = {
 const KEY_REPLACER = Object.keys(DIC_REPLACER);
 
 const replacer = ({ target }) => {
-  elementInput = target;
 
   KEY_REPLACER.forEach(item => (
-    elementInput.value = target.value.replace(item, DIC_REPLACER[item]
+    target.value = target.value.replace(item, DIC_REPLACER[item]
   )));
 }
 

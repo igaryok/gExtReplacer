@@ -7,15 +7,14 @@ const DIC_REPLACER_CON = {
 const KEY_REPLACER_CON= Object.keys(DIC_REPLACER_CON);
 
 const replacerContenteditable = ({ target }) => {
-  element = target;
   
   KEY_REPLACER_CON.forEach(item => {
     const range = document.createRange();
     const selection = window.getSelection();
 
-    element.innerHTML = element.innerHTML.replace(item, DIC_REPLACER_CON[item]);
+    target.innerHTML = target.innerHTML.replace(item, DIC_REPLACER_CON[item]);
     
-    range.selectNodeContents(element);
+    range.selectNodeContents(target);
     range.collapse(false);
     selection.removeAllRanges();
     selection.addRange(range);
